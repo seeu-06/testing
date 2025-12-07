@@ -1,6 +1,6 @@
 @startuml Class_diagram
 skinparam linetype ortho
-skinparam nodesep 45
+skinparam nodesep 50
 
 class "Usuario del\n Comedor" as Udr {
     string nombre
@@ -49,17 +49,14 @@ em -- inventory : utiliza >
 
 input -- inventory : controlado en >
 
-adm --> menu : planifica
-
 turn -down-> cons : genera
 
+rep <.. cons : datos
+rep <.. inventory : datos
 
 'IGNORE: visual order of the diagram
-cons -[hidden]down- inventory
+cons -[hidden]right- inventory
 menu -[hidden]left adm
-
-
-
-
-
+inventory --[hidden]down rep
+st -[hidden]left cons
 @enduml

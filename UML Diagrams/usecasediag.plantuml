@@ -34,7 +34,5 @@ package "Sistema de Comedor Universitario" {
     Admin --> UC_GestMenu
     Admin --> UC_Consumo
     Admin --> UC_Reports
-
 }
-
 @enduml
