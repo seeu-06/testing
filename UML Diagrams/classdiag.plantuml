@@ -1,0 +1,65 @@
+@startuml Class_diagram
+skinparam linetype ortho
+skinparam nodesep 45
+
+class "Usuario del\n Comedor" as Udr {
+    string nombre
+    string cédula
+    string password
+}
+
+class "Estudiante" as st {}
+class "Empleado" as em {}
+class "Administrador" as adm {}
+
+class "Menú" as menu {
+    Date fecha
+    string desc_comida
+}
+
+class "Insumo" as input {
+    string tipo
+    float cantidad
+}
+
+class "Plato" as dish {}
+
+class "Inventario" as inventory {}
+
+class "Turno" as turn {
+    Hora horario
+    bool estado
+}
+
+class "Consumo" as cons {}
+
+class "Reporte" as rep {}
+
+'structural relationships
+Udr <|-- st
+Udr <|-- em
+Udr -u-> menu : consulta
+Udr --l-- turn : solicita
+
+menu o-r- dish
+
+dish *-d- input
+
+em -- inventory : utiliza >
+
+input -- inventory : controlado en >
+
+adm --> menu : planifica
+
+turn -down-> cons : genera
+
+
+'IGNORE: visual order of the diagram
+cons -[hidden]down- inventory
+menu -[hidden]left adm
+
+
+
+
+
+@enduml
